@@ -17,10 +17,12 @@ namespace PowerPointToOBSSceneSwitcher
         {
             Console.Write("Connecting to PowerPoint...");
             ppt.SlideShowNextSlide += App_SlideShowNextSlide;
-            Console.WriteLine("connected");
+            Console.WriteLine("connectedz\n");
 
-            Console.Write("Connecting to OBS...");
-            OBS = new ObsLocal("ObsSecretPass123123");
+            Console.WriteLine("Input password to connect to OBS:");
+            var password = GetPassword(); 
+            Console.WriteLine("Connecting to OBS...");
+            OBS = new ObsLocal(password);
             await OBS.Connect();
             Console.WriteLine("connected");
 
@@ -94,5 +96,32 @@ namespace PowerPointToOBSSceneSwitcher
             }
         }
 
+        public static string GetPassword()
+        {
+            var pwd = "";
+            while (true)
+            {
+                ConsoleKeyInfo i = Console.ReadKey(true);
+                if (i.Key == ConsoleKey.Enter)
+                {
+                    break;
+                }
+                else if (i.Key == ConsoleKey.Backspace)
+                {
+                    if (pwd.Length > 0)
+                    {
+                        pwd.Remove(pwd.Length - 1);
+                        Console.Write("\b \b");
+                    }
+                }
+                else if (i.KeyChar != '\u0000') // KeyChar == '\u0000' if the key pressed does not correspond to a printable character, e.g. F1, Pause-Break, etc
+                {
+                    pwd += (i.KeyChar);
+                    Console.Write("*");
+                }
+            }
+            Console.WriteLine();
+            return pwd;
+        }
     }
 }
