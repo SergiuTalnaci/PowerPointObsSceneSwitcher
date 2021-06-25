@@ -3,7 +3,11 @@ A .NET core based scene switcher that connects to OBS and changes scenes based n
 
 Note this won't build with "dotnet build," instead open a Visual Studio 2019 Developer Command Prompt and build with "msbuild"
 
-This video explains how it works!
+This repository is a copy and slight modification of [the original](https://github.com/shanselman/PowerPointToOBSSceneSwitcher) and it is intended to use with the following guide: 
+
+https://sergiutalnaci.com/posts/live-camera-feed-in-powerpoint-slides/
+
+## Video guide by Scott Hanselman 
 
 [![Watch the video](https://i.imgur.com/v369AtP.png)](https://www.youtube.com/watch?v=ciNcxi2bPwM)
 
@@ -27,6 +31,9 @@ Example:
 ```<language>
 OBSDEF:DefaultScene
 ```
+
+## Credits
+This is a slight modification of the original PowerPointObsSceneSwitcher by (Jeff Fritz)[https://twitter.com/csharpfritz] and the .NET community.
 
 UPDATE: For many this just clones and builds, but for some folks (unknown why) it doesn't.
 
